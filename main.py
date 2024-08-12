@@ -18,6 +18,18 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    keys = pygame.key.get_pressed()
+
+    if keys[pygame.K_s]:
+        player_one.move("down")
+    if keys[pygame.K_w]:
+        player_one.move("up")
+
+    if keys[pygame.K_DOWN]:
+        player_two.move("down")
+    if keys[pygame.K_UP]:
+        player_two.move("up")
+
     screen.fill("black")
     player_one.draw()
     player_two.draw()
