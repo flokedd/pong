@@ -9,7 +9,7 @@ class Ball:
         self.direction = direction
         self.rect = pygame.Rect(pos[0], pos[1], self.radius*2, self.radius*2)
 
-    def change_direction(self):
+    def change_direction_y(self):
         if self.rect.top == 0:
             self.direction[1] = 1
         elif self.rect.bottom == self.screen.get_size()[1]:

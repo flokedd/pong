@@ -38,7 +38,7 @@ while running:
         player_two.move("up")
 
     ball.move()
-    ball.change_direction()
+    ball.change_direction_y()
 
     ball.draw()
     player_one.draw()
