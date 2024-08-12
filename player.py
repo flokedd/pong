@@ -9,9 +9,11 @@ class Player:
 
     def move(self, direction):
         if direction == "down":
-            self.rect = self.rect.move(0, 5)
-        if direction == "up":
-            self.rect = self.rect.move(0, -5)
+            if self.rect.bottom != self.screen.get_size()[1]:
+                self.rect = self.rect.move(0, 5)
+        elif direction == "up":
+            if self.rect.top != 0:
+                self.rect = self.rect.move(0, -5)
 
     def draw(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
