@@ -1,6 +1,6 @@
 import pygame
 
-class Character:
+class Player:
     def __init__(self, color: tuple, pos:list):
         self.color = color
         self.size = (20, 100)
