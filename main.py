@@ -9,8 +9,8 @@ running = True
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
-player_one = Player(BLUE, (0, screen.get_size()[1]/2-Player.size[1]/2))
-player_two = Player(RED, (screen.get_size()[0]-Player.size[0], screen.get_size()[1]/2-Player.size[1]/2))
+player_one = Player(BLUE, (0, screen.get_size()[1]/2-Player.size[1]/2), 5)
+player_two = Player(RED, (screen.get_size()[0]-Player.size[0], screen.get_size()[1]/2-Player.size[1]/2), 5)
 
 while running:
     
