@@ -15,6 +15,10 @@ class Ball:
         elif self.rect.bottom == self.screen.get_size()[1]:
             self.direction[1] = -1
 
+    def change_direction_x(self, r, direction):
+        if self.rect.colliderect(r):
+            self.direction[0] = direction
+
     def move(self):
         self.rect = self.rect.move(self.direction[0] * self.speed, self.direction[1] * self.speed)
 
