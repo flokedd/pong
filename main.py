@@ -1,5 +1,6 @@
 import pygame
 from player import Player
+from ball import Ball
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
