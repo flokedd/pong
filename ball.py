@@ -1,13 +1,14 @@
 import pygame
+import random
 
 class Ball:
     screen = None
     radius = 25
-    def __init__(self, color: tuple, start_pos: tuple, speed, direction: list):
+    def __init__(self, color: tuple, start_pos: tuple, speed):
         self.color = color 
         self.speed = speed
         self.start_pos = start_pos
-        self.direction = direction
+        self.direction = [random.choice([1, -1]), random.choice([1, -1])]
         self.rect = pygame.Rect(start_pos[0], start_pos[1], self.radius*2, self.radius*2)
 
     def change_direction_y(self):
@@ -23,6 +24,7 @@ class Ball:
     def reset(self):
         self.rect.x = self.start_pos[0]
         self.rect.y = self.start_pos[1]
+        self.direction = [random.choice([1, -1]), random.choice([1, -1])]
 
     def move(self):
         self.rect = self.rect.move(self.direction[0] * self.speed, self.direction[1] * self.speed)
