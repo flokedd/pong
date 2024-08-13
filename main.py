@@ -39,12 +39,12 @@ while running:
 
     ball.move()
 
-    if ball.rect.centerx < player_one.rect.centerx:
+    if ball.rect.left < player_one.rect.centerx:
         player_two.score()
         ball.reset()
         player_one.reset()
         player_two.reset()
-    elif ball.rect.centerx > player_two.rect.centerx:
+    elif ball.rect.right > player_two.rect.centerx:
         player_one.score()
         ball.reset()
         player_one.reset()
