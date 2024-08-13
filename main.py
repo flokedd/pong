@@ -42,9 +42,13 @@ while running:
     if ball.rect.centerx < player_one.rect.centerx:
         player_two.score()
         ball.reset()
+        player_one.reset()
+        player_two.reset()
     elif ball.rect.centerx > player_two.rect.centerx:
         player_one.score()
         ball.reset()
+        player_one.reset()
+        player_two.reset()
 
     ball.change_direction_y()
     ball.change_direction_x(player_one.rect, 1)

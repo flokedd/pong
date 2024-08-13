@@ -13,6 +13,10 @@ class Player:
     def score(self):
         self.points += 1
 
+    def reset(self):
+        self.rect.x = self.start_pos[0]
+        self.rect.y = self.start_pos[1]
+
     def move(self, direction):
         if direction == "down":
             if self.rect.bottom != self.screen.get_size()[1]:
