@@ -38,6 +38,12 @@ while running:
         player_two.move("up")
 
     ball.move()
+
+    if ball.rect.centerx < player_one.rect.centerx:
+        player_two.score()
+    elif ball.rect.centerx > player_two.rect.centerx:
+        player_one.score()
+
     ball.change_direction_y()
     ball.change_direction_x(player_one.rect, 1)
     ball.change_direction_x(player_two.rect, -1)

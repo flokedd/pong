@@ -7,7 +7,11 @@ class Player:
         self.color = color
         self.speed = speed
         self.start_pos = start_pos
+        self.points = 0
         self.rect = pygame.Rect(start_pos[0], start_pos[1], self.size[0], self.size[1])
+
+    def score(self):
+        self.points += 1
 
     def move(self, direction):
         if direction == "down":
