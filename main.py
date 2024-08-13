@@ -8,6 +8,9 @@ clock = pygame.time.Clock()
 Player.screen = screen
 Ball.screen = screen
 running = True
+game_started  = False
+font = pygame.font.SysFont('Comic Sans MS', 30)
+start_text = font.render("Press any button to start", False, (255, 255, 255))
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 WHITE = (255, 255, 255)
@@ -20,6 +23,10 @@ ball = Ball(WHITE, (screen.get_size()[0]/2-Ball.radius, screen.get_size()[1]/2-B
 while running:
     
     for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            game_started = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            game_started = True
         if event.type == pygame.QUIT:
             running = False
 
@@ -37,7 +44,10 @@ while running:
     if keys[pygame.K_UP]:
         player_two.move("up")
 
-    ball.move()
+    if game_started:
+        ball.move()
+    else:
+        screen.blit(start_text, (screen.get_size()[0]/2-start_text.get_size()[0]/2, 200))
 
     if ball.rect.left < player_one.rect.centerx:
         player_two.score()
@@ -54,7 +64,7 @@ while running:
     ball.change_direction_x(player_one.rect, 1)
     ball.change_direction_x(player_two.rect, -1)
 
-    ball.draw()
+    ball.draw() 
     player_one.draw()
     player_two.draw()
     player_one.draw_score()
