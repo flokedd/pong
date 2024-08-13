@@ -4,6 +4,7 @@ from ball import Ball
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
+pygame.display.set_caption('Pong')
 clock = pygame.time.Clock()
 Player.screen = screen
 Ball.screen = screen
