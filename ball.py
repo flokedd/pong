@@ -20,6 +20,10 @@ class Ball:
         if self.rect.colliderect(r):
             self.direction[0] = direction
 
+    def reset(self):
+        self.rect.x = self.start_pos[0]
+        self.rect.y = self.start_pos[1]
+
     def move(self):
         self.rect = self.rect.move(self.direction[0] * self.speed, self.direction[1] * self.speed)
 
