@@ -8,6 +8,7 @@ class Player:
         self.speed = speed
         self.start_pos = start_pos
         self.points = 0
+        self.score_font = pygame.font.SysFont('Comic Sans MS', 30)
         self.rect = pygame.Rect(start_pos[0], start_pos[1], self.size[0], self.size[1])
 
     def score(self):
@@ -24,6 +25,13 @@ class Player:
         elif direction == "up":
             if self.rect.top != 0:
                 self.rect = self.rect.move(0, -self.speed)
+
+    def draw_score(self):
+        score_text = self.score_font.render(str(self.points), False, (255, 255, 255))
+        if self.start_pos[0] == 0:
+            self.screen.blit(score_text, (self.start_pos[0] + 200, 200))
+        else:
+            self.screen.blit(score_text, (self.start_pos[0] - 200, 200))
 
     def draw(self):
         pygame.draw.rect(self.screen, self.color, self.rect)

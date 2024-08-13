@@ -57,6 +57,8 @@ while running:
     ball.draw()
     player_one.draw()
     player_two.draw()
+    player_one.draw_score()
+    player_two.draw_score()
 
     pygame.display.flip()
 
