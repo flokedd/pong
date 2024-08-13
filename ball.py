@@ -3,11 +3,12 @@ import pygame
 class Ball:
     screen = None
     radius = 25
-    def __init__(self, color: tuple, pos: tuple, speed, direction: list):
+    def __init__(self, color: tuple, start_pos: tuple, speed, direction: list):
         self.color = color 
         self.speed = speed
+        self.start_pos = start_pos
         self.direction = direction
-        self.rect = pygame.Rect(pos[0], pos[1], self.radius*2, self.radius*2)
+        self.rect = pygame.Rect(start_pos[0], start_pos[1], self.radius*2, self.radius*2)
 
     def change_direction_y(self):
         if self.rect.top == 0:
