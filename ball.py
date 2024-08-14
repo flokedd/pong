@@ -20,10 +20,12 @@ class Ball:
     def change_direction_x(self, r):
         if self.rect.colliderect(r):
             self.speed[0] *= -1
-            if self.speed[0] < 0:
-                self.speed[0] -= 1
-            else:
-                self.speed[0] += 1
+            max_speed = 23
+            if self.speed[0] < max_speed:
+                if self.speed[0] < 0:
+                    self.speed[0] -= 1
+                else:
+                    self.speed[0] += 1
             if self.rect.centery == r.centery:
                 self.speed[1] = 0
                 return
