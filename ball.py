@@ -4,33 +4,40 @@ import random
 class Ball:
     screen = None
     radius = 25
-    def __init__(self, color: tuple, start_pos: tuple, start_speed):
+    def __init__(self, color: tuple, start_pos: tuple, start_speed: list):
         self.color = color 
         self.start_speed = start_speed
-        self.speed = start_speed
+        self.speed = start_speed.copy()
         self.start_pos = start_pos
-        self.direction = [random.choice([1, -1]), random.choice([1, -1])]
         self.rect = pygame.Rect(start_pos[0], start_pos[1], self.radius*2, self.radius*2)
 
     def change_direction_y(self):
         if self.rect.top <= 0:
-            self.direction[1] = 1
+            self.speed[1] = self.speed[1] * -1
         elif self.rect.bottom >= self.screen.get_size()[1]:
-            self.direction[1] = -1
+            self.speed[1] = self.speed[1] * -1
 
-    def change_direction_x(self, r, direction):
+    def change_direction_x(self, r):
         if self.rect.colliderect(r):
-            self.direction[0] = direction
-            self.speed += 0.5
+            self.speed[0] *= -1
+            max_speed = 22
+            if max(self.speed[0], -self.speed[0]) < max_speed:
+                if self.speed[0] < 0:
+                    self.speed[0] -= 1
+                else:
+                    self.speed[0] += 1
+            if self.rect.centery == r.centery:
+                self.speed[1] = 0
+                return
+            self.speed[1] = (self.rect.centery - r.centery) * 0.1    
 
     def reset(self):
         self.rect.x = self.start_pos[0]
         self.rect.y = self.start_pos[1]
-        self.direction = [random.choice([1, -1]), random.choice([1, -1])]
-        self.speed = self.start_speed
+        self.speed = self.start_speed.copy()
 
     def move(self):
-        self.rect = self.rect.move(self.direction[0] * self.speed, self.direction[1] * self.speed)
+        self.rect = self.rect.move(self.speed[0], self.speed[1])
 
     def draw(self):
         pygame.draw.circle(self.screen, self.color, self.rect.center, self.radius)

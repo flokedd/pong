@@ -19,7 +19,7 @@ WHITE = (255, 255, 255)
 player_one = Player(BLUE, (0, screen.get_size()[1]/2-Player.size[1]/2), 5)
 player_two = Player(RED, (screen.get_size()[0]-Player.size[0], screen.get_size()[1]/2-Player.size[1]/2), 5)
 
-ball = Ball(WHITE, (screen.get_size()[0]/2-Ball.radius, screen.get_size()[1]/2-Ball.radius), 5)
+ball = Ball(WHITE, (screen.get_size()[0]/2-Ball.radius, screen.get_size()[1]/2-Ball.radius), [5, 5])
 
 while running:
     
@@ -50,20 +50,20 @@ while running:
     else:
         screen.blit(start_text, (screen.get_size()[0]/2-start_text.get_size()[0]/2, 200))
 
-    if ball.rect.left < player_one.rect.centerx:
+    if ball.rect.left < player_one.rect.left:
         player_two.score()
         ball.reset()
         player_one.reset()
         player_two.reset()
-    elif ball.rect.right > player_two.rect.centerx:
+    elif ball.rect.right > player_two.rect.right:
         player_one.score()
         ball.reset()
         player_one.reset()
         player_two.reset()
 
     ball.change_direction_y()
-    ball.change_direction_x(player_one.rect, 1)
-    ball.change_direction_x(player_two.rect, -1)
+    ball.change_direction_x(player_one.rect)
+    ball.change_direction_x(player_two.rect)
 
     ball.draw() 
     player_one.draw()
